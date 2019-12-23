@@ -45,7 +45,8 @@ function chooseCrypto() {
   }
 }
 
-function createCharSet() {
+// Creates a string containing the concatenation of the user selected check boxes
+function createCharSetString() {
   var charSetString = "";
   if (numbersElem.checked) {
     console.log("Numbers is Checked");
@@ -72,6 +73,25 @@ function createCharSet() {
     charSetString += characterSets[4][2];
     console.log(charSetString);
   }
+  return charSetString;
 }
 
-createCharSet();
+// Converts a string into an array of characters usable by the PRNG function
+function createCharSet(str) {
+  var charSet = [];
+  for (var i = 0; i < str.length; i++) {
+    if (charSet.indexOf(str.charAt(i)) === -1) {
+      charSet.push(str.charAt(i));
+    }
+  }
+  console.log(charSet);
+  if (charSet.length > 0) {
+    return charSet;
+  } else {
+    alert(
+      "Character set is empty. Please select characters to use before generating a password"
+    );
+  }
+}
+
+createCharSet(createCharSetString());
