@@ -6,6 +6,8 @@ This is a tool designed to randomly generate a secure password based on user sel
 
 Generating a strong, unique password is an essential step in maintaining user and enterprise security. Users re-use passwords across multiple sites and applications, creating an expounding risk if any single site or application is compromised. Convenience is a major hurdle in getting users to implement strong, unique passwords. A password generator such as this removes a barrier and increases user uptake of secure practices.
 
+N.B. Even very secure passwords require good habits to maintain security. Do not reuse passwords across multiple sites and applications and always enable two-factor authentication if a site supports it.
+
 ## Technical
 The application takes a user's selected criteria and creates a character set and length to use in a password. Utilizing crytographically secure PRNG (psuedo-random number generation), the application randomly selects characters from the applicable character set and outputs a string the user is able to copy and utilize as a password. The application utilizes the methods found below to calculate the resulting entropy (related in bits, with more bits of entropy generally being more secure). True random number generation is not practical on a consumer scale, but the application utilizes in-built methods to javascript to utilize a sufficiently secure seed for the PRNG process.
 
