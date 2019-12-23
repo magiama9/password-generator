@@ -13,3 +13,5 @@ The application takes a user's selected criteria and creates a character set and
 Articles on password generation and password strength calculation.
 https://en.wikipedia.org/wiki/Password_strength
 https://en.wikipedia.org/wiki/Random_password_generator
+
+Chart of expected time to brute force password - http://i.imgur.com/e3mGIFY.png
