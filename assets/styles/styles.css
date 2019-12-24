@@ -2,12 +2,35 @@
 
 /* Sets default fonts for the page */
 html {
-
   font-size: 16px;
-  font-family: 'PT Sans', sans-serif;
+  font-family: "PT Sans", sans-serif;
   line-height: 24px;
-
+  background: #ffca80;
+}
+body {
+  background: #738a9b;
 }
 li.footerlink {
-  background-color: #3f3742;
+  background-color: #738a9b;
 }
+
+footer.fixed-bottom {
+  background-color: #738a9b;
+  max-height: 100px;
+}
+
+div.row.left-column, div.row.right-column {
+  background-color: #d69bae;
+  margin-top: 25%;
+}
+
+h1.form-header {
+  color: #582a72;
+  font-size: 32px;
+}
+
+div.row p a {
+  text-decoration: none;
+  color: #582a72;
+}
+

@@ -30,9 +30,28 @@
   <body>
     <div class="container-fluid form-content">
       <div class="row">
-        <div class="col-12 col-lg-3"></div>
+        <div class="col-12 col-lg-3">
+          <div class="row left-column">
+            <h1 class="form-header">About This Tool</h1>
+            <p>
+              This is a tool designed to randomly generate a secure password
+              based on your selected criteria. The program is computed entirely
+              on your browser and no information is transmitted back to the
+              server.
+            </p>
+            <p>
+              To use the tool, first select the character sets you would like to
+              include in your password. Then select a length for your password
+              and hit generate. If you would like, you can use the button to
+              copy your password to the clipboard.
+            </p>
+          </div>
+        </div>
 
         <div class="col-12 col-lg-6">
+          <div class="row">
+            <h1 class="form-header">Password Generation Tool</h1>
+          </div>
           <form onsubmit="makePasswordEvent(event)">
             <div class="form-row">
               <div class="form-check form-check-inline col-12 col-lg-2">
@@ -101,19 +120,15 @@
                 </div>
               </div>
             </div>
-            <div class="row my-2">
+            <div class="form-row my-2">
               <div class="col-12 col-lg-6">
-                <div class="form-row">
-                  <div class="col-12 col-lg-6">
-                    <label for="validationDefault05">Password Length</label>
-                    <input
-                      type="text"
-                      class="form-control mt-n2"
-                      id="validationDefault05"
-                      required
-                    />
-                  </div>
-                </div>
+                <label for="validationDefault05">Password Length</label>
+                <input
+                  type="text"
+                  class="form-control mt-n2"
+                  id="validationDefault05"
+                  required
+                />
               </div>
             </div>
             <button type="submit" class="btn btn-primary my-2">Generate</button>
@@ -142,29 +157,50 @@
             Copy Password to Clipboard
           </button>
         </div>
-        <div class="col-12 col-lg-3"></div>
+        <div class="col-12 col-lg-3">
+          <div class="row right-column">
+            <h1 class="form-header">Additional Resources</h1>
+            <p>
+              Read more about
+              <a
+                href="https://en.wikipedia.org/wiki/Password_strength"
+                target="_blank"
+                >password strength</a
+              >
+              and
+              <a
+                href="https://en.wikipedia.org/wiki/Random_password_generator"
+                target="_blank"
+                >password generation.</a
+              >
+            </p>
+            <p>
+              N.B. Even very secure passwords require good habits to maintain
+              security. Do not reuse passwords across multiple sites and
+              applications and always enable two-factor authentication if a site
+              supports it.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-    <footer
-      class="footer fixed-bottom pb-4"
-      style="background-color: #3f3742; max-height: 60px;"
-    >
+    <footer class="footer fixed-bottom">
       <div class="container">
         <ul class="list-group list-group-horizontal mb-2">
           <li class="list-group-item border-0 footerlink">
-            <a href="https://www.linkedin.com/in/sam-randels/"
+            <a href="https://www.linkedin.com/in/sam-randels/" target="_blank"
               ><img src="assets/images/linkedin-50px-blue.png"
             /></a>
           </li>
 
           <li class="list-group-item border-0 footerlink">
-            <a href="https://www.github.com/magiama9"
+            <a href="https://www.github.com/magiama9" target="_blank"
               ><img src="assets/images/github-50px-blue.png"
             /></a>
           </li>
 
           <li class="list-group-item border-0 footerlink">
-            <a href="mailto:samrandels+portfolio@gmail.com"
+            <a href="mailto:samrandels+portfolio@gmail.com" target="_blank"
               ><img src="assets/images/email-50px-blue.png"
             /></a>
           </li>
