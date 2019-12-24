@@ -129,7 +129,6 @@ function makePasswordEvent(event) {
   // Generate password
   generatedPassword = makePassword(charset, length);
 
-  
   // Create output text and place into the current form.
   passwordElem.placeholder = generatedPassword;
 
@@ -139,8 +138,9 @@ function makePasswordEvent(event) {
   // Calculate password entropy, round to 2 decimal points, and display it to the user.
   var entropy = (Math.log(charset.length) * length) / Math.log(2);
   var entropyShort = entropy.toFixed(2);
-  entropyElem.placeholder ="Your password contains " + entropyShort + " bits of entropy";
-  entropyElem.style = "display:block"
+  entropyElem.placeholder =
+    "Your password contains " + entropyShort + " bits of entropy";
+  entropyElem.style = "display:block";
 }
 
 /* Uses whichever browser crypto method is available to
