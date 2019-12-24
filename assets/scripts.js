@@ -33,7 +33,7 @@ var symbolsElem = document.getElementById("symbolsCheckbox");
 var spacesElem = document.getElementById("spacesCheckbox");
 var copyElem = document.getElementById("copy-button");
 var lengthElem = document.getElementById("validationDefault05");
-
+var entropyElem = document.getElementById("entropy");
 var copyElem = document.getElementById("copy-button");
 var cryptoType = null;
 var generatedPassword = null;
@@ -112,9 +112,14 @@ function makePasswordEvent(event) {
   // Calculate desired length by returning an integer value in base 10
   var length;
   length = parseInt(lengthElem.value, 10);
-
-  // Check length
-  if (length < 0) {
+  ;
+  /* Check user selected length
+  There is form validation to ensure the user selects a length
+  This ensures that the user selected length is valid */
+  if (isNaN(length)) {
+    alert("Password length must be a number between 2 and 100.");
+    return;
+  } else if (length < 2) {
     alert("Password length must be between 2 and 100 characters.");
     return;
   } else if (length > 100) {
@@ -132,11 +137,13 @@ function makePasswordEvent(event) {
   passwordElem.placeholder = generatedPassword;
   // enable the copy to clipboard button
   copyElem.disabled = false;
+
+  entropyElem.placeholder = entropy;
 }
 
 /* Uses whichever browser crypto method is available to
 generate a random number from 0 to n.
-n will become the length of the user selected charset. */
+len is the length of password to output */
 function makePassword(charset, len) {
   var result = "";
   for (var i = 0; i < len; i++) {
@@ -146,7 +153,7 @@ function makePassword(charset, len) {
   return result;
 }
 
-// Seeds the useCrypto function
+// Seeds the useCrypto function with a starting value.
 function randomInt(n) {
   var x = Math.floor(Math.random() * n);
   x = (x + useCrypto(n)) % n;
@@ -162,7 +169,6 @@ function useCrypto(num) {
   } else var arr = new Uint32Array(1);
   do cryptoType.getRandomValues(arr);
   while (arr[0] - (arr[0] % num) > 4294967296 - num);
-  console.log(arr[0] % num);
   return arr[0] % num;
 }
 
