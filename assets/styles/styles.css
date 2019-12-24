@@ -1,0 +1,13 @@
+/** Universal Stylesheet for Password Generator**/
+
+/* Sets default fonts for the page */
+html {
+
+  font-size: 16px;
+  font-family: 'PT Sans', sans-serif;
+  line-height: 24px;
+
+}
+li.footerlink {
+  background-color: #3f3742;
+}
