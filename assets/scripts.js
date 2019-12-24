@@ -32,6 +32,9 @@ var uppercaseElem = document.getElementById("uppercaseCheckbox");
 var symbolsElem = document.getElementById("symbolsCheckbox");
 var spacesElem = document.getElementById("spacesCheckbox");
 var copyElem = document.getElementById("copy-button");
+var lengthElem = document.getElementById("validationDefault05");
+
+var copyElem = document.getElementById("copy-button");
 var cryptoType = null;
 var generatedPassword = null;
 
@@ -77,6 +80,7 @@ function createCharSetString() {
 }
 
 // Converts a string into an array of characters usable by the PRNG function
+// If the user hasn't selected any checkboxes, alert them and stop the function.
 function createCharSet(str) {
   var charSet = [];
   for (var i = 0; i < str.length; i++) {
@@ -91,7 +95,80 @@ function createCharSet(str) {
     alert(
       "Character set is empty. Please select characters to use before generating a password"
     );
+    return null;
   }
 }
 
-createCharSet(createCharSetString());
+function makePasswordEvent(event) {
+  event.preventDefault();
+
+  // Generate character set as a string, convert it to an array, then store it.
+  var charset = createCharSet(createCharSetString());
+  if (charset.length == 0) {
+    alert("Character set is empty");
+    return;
+  }
+
+  // Calculate desired length by returning an integer value in base 10
+  var length;
+  length = parseInt(lengthElem.value, 10);
+
+  // Check length
+  if (length < 0) {
+    alert("Password length must be between 2 and 100 characters.");
+    return;
+  } else if (length > 100) {
+    alert("Password is too large. Select a more reasonable value.");
+    return;
+  }
+
+  // Generate password
+  generatedPassword = makePassword(charset, length);
+
+  // Calculate and format entropy
+  var entropy = (Math.log(charset.length) * length) / Math.log(2);
+
+  // Create output text and place into the current form.
+  passwordElem.placeholder = generatedPassword;
+  // enable the copy to clipboard button
+  copyElem.disabled = false;
+}
+
+/* Uses whichever browser crypto method is available to
+generate a random number from 0 to n.
+n will become the length of the user selected charset. */
+function makePassword(charset, len) {
+  var result = "";
+  for (var i = 0; i < len; i++) {
+    result = result + charset[randomInt(charset.length)];
+  }
+  console.log(result);
+  return result;
+}
+
+// Seeds the useCrypto function
+function randomInt(n) {
+  var x = Math.floor(Math.random() * n);
+  x = (x + useCrypto(n)) % n;
+  return x;
+}
+
+/* Uses browser based encryption type to pseudo-randomly generate a secure value. 
+Ensures value is able to be stored (4294967296 is (2^32 -1) */
+function useCrypto(num) {
+  console.log(num);
+  if (cryptoType === null) {
+    return 0;
+  } else var arr = new Uint32Array(1);
+  do cryptoType.getRandomValues(arr);
+  while (arr[0] - (arr[0] % num) > 4294967296 - num);
+  console.log(arr[0] % num);
+  return arr[0] % num;
+}
+
+/* Copies the generated password to the clipboard.
+This method may or may not work on firefox based browsers.*/
+
+function doCopy() {
+  navigator.clipboard.writeText(generatedPassword);
+}
