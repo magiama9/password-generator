@@ -28,65 +28,111 @@
     <title>SHR Password Generator - Placeholder</title>
   </head>
   <body>
-    <div class="container">
-      <form>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="lowercaseCheckbox"
-            value="option1"
-            checked="checked"
-          />
-          <label class="form-check-label" for="lowercaseCheckbox"
-            >lowercase</label
+    <div class="container-fluid form-content">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <form onsubmit="makePasswordEvent(event)">
+            <div class="form-row">
+              <div class="form-check form-check-inline col-12 col-lg-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="lowercaseCheckbox"
+                  value="option1"
+                  checked="checked"
+                />
+                <label class="form-check-label" for="lowercaseCheckbox"
+                  >lowercase</label
+                >
+              </div>
+
+              <div class="form-check form-check-inline col-12 col-lg-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="uppercaseCheckbox"
+                  value="option2"
+                  checked="checked"
+                />
+                <label class="form-check-label" for="uppercaseCheckbox"
+                  >UPPERCASE</label
+                >
+              </div>
+              <div class="form-check form-check-inline col-12 col-lg-2">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="numbersCheckbox"
+                  value="option3"
+                  checked="checked"
+                />
+                <label class="form-check-label" for="numbersCheckbox"
+                  >Numbers</label
+                >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-lg-6">
+                <div class="form-row">
+                  <div class="form-check form-check-inline col-12 col-lg-3">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="symbolsCheckbox"
+                      value="option4"
+                    />
+                    <label class="form-check-label" for="symbolsCheckbox"
+                      >Symbols</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline col-12 col-lg-3">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="spacesCheckbox"
+                      value="option5"
+                    />
+                    <label class="form-check-label" for="spacesCheckbox"
+                      >Spaces</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row my-2">
+              <div class="col-12 col-lg-6">
+                <div class="form-row">
+                  <div class="col-12 col-lg-6">
+                    <label for="validationDefault05">Password Length</label>
+                    <input
+                      type="text"
+                      class="form-control mt-n2"
+                      id="validationDefault05"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary my-2">Generate</button>
+            <input
+              class="form-control"
+              id="password"
+              type="text"
+              placeholder="Generated password will appear here"
+              readonly
+            />
+          </form>
+          <button
+            class="btn btn-primary my-2"
+            id="copy-button"
+            onclick="doCopy()";
+            disabled
           >
+            Copy to Clipboard
+          </button>
         </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="uppercaseCheckbox"
-            value="option2"
-            checked="checked"
-          />
-          <label class="form-check-label" for="uppercaseCheckbox"
-            >UPPERCASE</label
-          >
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="numbersCheckbox"
-            value="option3"
-            checked="checked"
-          />
-          <label class="form-check-label" for="numbersCheckbox"
-            >Numbers</label
-          >
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="symbolsCheckbox"
-            value="option4"
-          />
-          <label class="form-check-label" for="symbolsCheckbox">Symbols</label>
-        </div>
-        <div class="form-check form-check-inline px-2">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="spacesCheckbox"
-            value="option5"
-          />
-          <label class="form-check-label" for="spacesCheckbox"
-            >S P A C E S</label
-          >
-        </div>
-      </form>
+      </div>
     </div>
 
     <script
