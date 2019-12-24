@@ -112,7 +112,6 @@ function makePasswordEvent(event) {
   // Calculate desired length by returning an integer value in base 10
   var length;
   length = parseInt(lengthElem.value, 10);
-  ;
   /* Check user selected length
   There is form validation to ensure the user selects a length
   This ensures that the user selected length is valid */
@@ -130,15 +129,18 @@ function makePasswordEvent(event) {
   // Generate password
   generatedPassword = makePassword(charset, length);
 
-  // Calculate and format entropy
-  var entropy = (Math.log(charset.length) * length) / Math.log(2);
-
+  
   // Create output text and place into the current form.
   passwordElem.placeholder = generatedPassword;
+
   // enable the copy to clipboard button
   copyElem.disabled = false;
 
-  entropyElem.placeholder = entropy;
+  // Calculate password entropy, round to 2 decimal points, and display it to the user.
+  var entropy = (Math.log(charset.length) * length) / Math.log(2);
+  var entropyShort = entropy.toFixed(2);
+  entropyElem.placeholder ="Your password contains " + entropyShort + " bits of entropy";
+  entropyElem.style = "display:block"
 }
 
 /* Uses whichever browser crypto method is available to
