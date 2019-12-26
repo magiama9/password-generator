@@ -5,24 +5,24 @@ html {
   font-size: 16px;
   font-family: "PT Sans", sans-serif;
   line-height: 24px;
-  background: #ffca80;
+  background: #131219;
 }
 body {
-  background: #738a9b;
+  background: #131219;
 }
 li.footerlink {
-  background-color: #738a9b;
+  background-color: #131219;
 }
 
-footer.fixed-bottom {
-  background-color: #738a9b;
-  max-height: 100px;
+
+div.card.left-column, div.card.right-column {
+  /* background-color: #619471; */
+  margin-top: 20%;
 }
 
-div.row.left-column, div.row.right-column {
-  background-color: #d69bae;
-  margin-top: 25%;
-}
+/* div.card.center-column {
+   background-color: #131219;
+} */
 
 h1.form-header {
   color: #582a72;

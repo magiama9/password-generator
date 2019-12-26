@@ -7,7 +7,19 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <!-- Fonts and Icons for Material Design -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
+    />
 
+    <!-- Bootstrap Material Design Theme -->
+    <link rel="stylesheet" href="assets/styles/material-kit.css" />
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -16,200 +28,223 @@
       crossorigin="anonymous"
     />
 
-    <!-- Fonts from Google Fonts -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Contrail+One|PT+Sans|Roboto&display=swap"
-    />
-
     <!-- Universal Stylesheet -->
     <link rel="stylesheet" href="assets/styles/styles.css" />
 
-    <title>SHR Password Generator - Placeholder</title>
+    <title>SHR Password Generator</title>
   </head>
   <body>
-    <div class="container-fluid form-content">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-lg-3">
-          <div class="row left-column">
-            <h1 class="form-header">About This Tool</h1>
-            <p>
-              This is a tool designed to randomly generate a secure password
-              based on your selected criteria. The program is computed entirely
-              on your browser and no information is transmitted back to the
-              server.
-            </p>
-            <p>
-              To use the tool, first select the character sets you would like to
-              include in your password. Then select a length for your password
-              and hit generate. If you would like, you can use the button to
-              copy your password to the clipboard.
-            </p>
+          <div class="card left-column">
+            <div class="row card-header">
+              <h1 class="form-header card-title">About This Tool</h1>
+            </div>
+            <div class="card-body">
+              <p>
+                This is a tool designed to randomly generate a secure password
+                based on your selected criteria. The program is computed
+                entirely on your browser and no information is transmitted back
+                to the server.
+              </p>
+              <p>
+                To use the tool, first select the character sets you would like
+                to include in your password. Then select a length for your
+                password and hit generate. If you would like, you can use the
+                button to copy your password to the clipboard.
+              </p>
+            </div>
           </div>
         </div>
 
         <div class="col-12 col-lg-6">
           <div class="row">
-            <h1 class="form-header">Password Generation Tool</h1>
-          </div>
-          <form onsubmit="makePasswordEvent(event)">
-            <div class="form-row">
-              <div class="form-check form-check-inline col-12 col-lg-2">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="lowercaseCheckbox"
-                  value="option1"
-                  checked="checked"
-                />
-                <label class="form-check-label" for="lowercaseCheckbox"
-                  >lowercase</label
-                >
+            <div class="card center-column">
+              <div class="row card-header">
+                <h1 class="form-header card-title">Password Generation Tool</h1>
               </div>
+              <div class="card-body">
+                <form onsubmit="makePasswordEvent(event)">
+                  <div class="form-row">
+                    <div class="label-check form-check-inline col-12 col-lg-2">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="lowercaseCheckbox"
+                        value="option1"
+                        checked="checked"
+                      />
+                      <label class="form-check-label" for="lowercaseCheckbox"
+                        >lowercase</label
+                      >
+                    </div>
 
-              <div class="form-check form-check-inline col-12 col-lg-2">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="uppercaseCheckbox"
-                  value="option2"
-                  checked="checked"
-                />
-                <label class="form-check-label" for="uppercaseCheckbox"
-                  >UPPERCASE</label
-                >
-              </div>
-              <div class="form-check form-check-inline col-12 col-lg-2">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="numbersCheckbox"
-                  value="option3"
-                  checked="checked"
-                />
-                <label class="form-check-label" for="numbersCheckbox"
-                  >Numbers</label
-                >
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12 col-lg-6">
-                <div class="form-row">
-                  <div class="form-check form-check-inline col-12 col-lg-3">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="symbolsCheckbox"
-                      value="option4"
-                    />
-                    <label class="form-check-label" for="symbolsCheckbox"
-                      >Symbols</label
-                    >
+                    <div class="label-check form-check-inline col-12 col-lg-2">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="uppercaseCheckbox"
+                        value="option2"
+                        checked="checked"
+                      />
+                      <label class="form-check-label" for="uppercaseCheckbox"
+                        >UPPERCASE</label
+                      >
+                    </div>
+                    <div class="label-check form-check-inline col-12 col-lg-2">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="numbersCheckbox"
+                        value="option3"
+                        checked="checked"
+                      />
+                      <label class="form-check-label" for="numbersCheckbox"
+                        >Numbers</label
+                      >
+                    </div>
                   </div>
-                  <div class="form-check form-check-inline col-12 col-lg-3">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="spacesCheckbox"
-                      value="option5"
-                    />
-                    <label class="form-check-label" for="spacesCheckbox"
-                      >Spaces</label
-                    >
+                  <div class="row">
+                    <div class="col-12 col-lg-6">
+                      <div class="form-row">
+                        <div
+                          class="label-check form-check-inline col-12 col-lg-3"
+                        >
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="symbolsCheckbox"
+                            value="option4"
+                          />
+                          <label class="form-check-label" for="symbolsCheckbox"
+                            >Symbols</label
+                          >
+                        </div>
+                        <div
+                          class="label-check form-check-inline col-12 col-lg-3"
+                        >
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="spacesCheckbox"
+                            value="option5"
+                          />
+                          <label class="form-check-label" for="spacesCheckbox"
+                            >Spaces</label
+                          >
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                  <div class="form-row my-2">
+                    <div class="col-12 col-lg-6">
+                      <label for="validationDefault05">Password Length</label>
+                      <input
+                        type="text"
+                        class="form-control mt-n2"
+                        id="validationDefault05"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary my-2">
+                    Generate
+                  </button>
+                  <input
+                    class="form-control"
+                    id="password"
+                    type="text"
+                    placeholder="Generated password will appear here"
+                    readonly
+                  />
+                  <input
+                    class="form-control"
+                    id="entropy"
+                    type="text"
+                    style="display:none"
+                    placeholder="Calculated entropy will appear here."
+                    readonly
+                  />
+                </form>
+                <button
+                  class="btn btn-primary my-2"
+                  id="copy-button"
+                  onclick="doCopy()"
+                  disabled
+                >
+                  Copy Password to Clipboard
+                </button>
               </div>
             </div>
-            <div class="form-row my-2">
-              <div class="col-12 col-lg-6">
-                <label for="validationDefault05">Password Length</label>
-                <input
-                  type="text"
-                  class="form-control mt-n2"
-                  id="validationDefault05"
-                  required
-                />
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary my-2">Generate</button>
-            <input
-              class="form-control"
-              id="password"
-              type="text"
-              placeholder="Generated password will appear here"
-              readonly
-            />
-            <input
-              class="form-control"
-              id="entropy"
-              type="text"
-              style="display:none"
-              placeholder="Calculated entropy will appear here."
-              readonly
-            />
-          </form>
-          <button
-            class="btn btn-primary my-2"
-            id="copy-button"
-            onclick="doCopy()"
-            disabled
-          >
-            Copy Password to Clipboard
-          </button>
+          </div>
+          <div class="row">
+            <ul class="list-group list-group-horizontal mb-2">
+              <li class="list-group-item border-0 footerlink">
+                <a
+                  href="https://www.linkedin.com/in/sam-randels/"
+                  target="_blank"
+                  ><img src="assets/images/linkedin-50px-blue.png"
+                /></a>
+              </li>
+
+              <li class="list-group-item border-0 footerlink">
+                <a href="https://www.github.com/magiama9" target="_blank"
+                  ><img src="assets/images/github-50px-blue.png"
+                /></a>
+              </li>
+
+              <li class="list-group-item border-0 footerlink">
+                <a href="mailto:samrandels+portfolio@gmail.com" target="_blank"
+                  ><img src="assets/images/email-50px-blue.png"
+                /></a>
+              </li>
+              <li class="list-group-item border-0 footerlink">
+                <span class="text-muted">&copy; 2019 Sam Randels</span>
+              </li>
+            </ul>
+          </div>
         </div>
         <div class="col-12 col-lg-3">
-          <div class="row right-column">
-            <h1 class="form-header">Additional Resources</h1>
-            <p>
-              Read more about
-              <a
-                href="https://en.wikipedia.org/wiki/Password_strength"
-                target="_blank"
-                >password strength</a
-              >
-              and
-              <a
-                href="https://en.wikipedia.org/wiki/Random_password_generator"
-                target="_blank"
-                >password generation.</a
-              >
-            </p>
-            <p>
-              N.B. Even very secure passwords require good habits to maintain
-              security. Do not reuse passwords across multiple sites and
-              applications and always enable two-factor authentication if a site
-              supports it.
-            </p>
+          <div class="card right-column">
+            <div class="row card-header">
+              <h1 class="form-header card-title">Additional Resources</h1>
+            </div>
+            <div class="card-body">
+              <p>
+                Read more about
+                <a
+                  href="https://en.wikipedia.org/wiki/Password_strength"
+                  target="_blank"
+                  >password strength</a
+                >
+                and
+                <a
+                  href="https://en.wikipedia.org/wiki/Random_password_generator"
+                  target="_blank"
+                  >password generation.</a
+                >
+              </p>
+              <p>
+                View this project's source code on
+                <a
+                  href="https://github.com/magiama9/password-generator"
+                  target="_blank"
+                  >Github.</a
+                >
+              </p>
+              <p>
+                N.B. Even very secure passwords require good habits to maintain
+                security. Do not reuse passwords across multiple sites and
+                applications and always enable two-factor authentication if a
+                site supports it.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <footer class="footer fixed-bottom">
-      <div class="container">
-        <ul class="list-group list-group-horizontal mb-2">
-          <li class="list-group-item border-0 footerlink">
-            <a href="https://www.linkedin.com/in/sam-randels/" target="_blank"
-              ><img src="assets/images/linkedin-50px-blue.png"
-            /></a>
-          </li>
 
-          <li class="list-group-item border-0 footerlink">
-            <a href="https://www.github.com/magiama9" target="_blank"
-              ><img src="assets/images/github-50px-blue.png"
-            /></a>
-          </li>
-
-          <li class="list-group-item border-0 footerlink">
-            <a href="mailto:samrandels+portfolio@gmail.com" target="_blank"
-              ><img src="assets/images/email-50px-blue.png"
-            /></a>
-          </li>
-          <li class="list-group-item border-0 footerlink">
-            <span class="text-muted">&copy; 2019 Sam Randels</span>
-          </li>
-        </ul>
-      </div>
-    </footer>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
