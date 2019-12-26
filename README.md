@@ -3,7 +3,7 @@ Password Generator Homework Repo
 
 ## Description
 
-![Application Screenshot](/assets/images/screenshot.png)
+![Application Screenshot](https://github.com/magiama9/password-generator/blob/master/assets/Images/screenshot.png)
 
 This is a tool designed to randomly generate a secure password based on user selected criteria. The program is computed entirely on the user's browser and no information is transmitted back to the server. The user is able to copy the password to the clipboard and utilize in in whatever manner they choose.
 
