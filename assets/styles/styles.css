@@ -34,3 +34,10 @@ div.row p a {
   color: #582a72;
 }
 
+label.form-check-label {
+  color: #131219;
+}
+
+div.label-check {
+  margin-top: 10px;
+}
