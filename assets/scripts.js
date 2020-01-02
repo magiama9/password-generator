@@ -53,29 +53,29 @@ function chooseCrypto() {
 function createCharSetString() {
   var charSetString = "";
   if (numbersElem.checked) {
-    console.log("Numbers is Checked");
+    // console.log("Numbers is Checked");
     charSetString += characterSets[0][2];
-    console.log(charSetString);
+    // console.log(charSetString);
   }
   if (lowercaseElem.checked) {
-    console.log("Lowercase is Checked");
+    // console.log("Lowercase is Checked");
     charSetString += characterSets[1][2];
-    console.log(charSetString);
+    // console.log(charSetString);
   }
   if (uppercaseElem.checked) {
-    console.log("Uppercase is Checked");
+    // console.log("Uppercase is Checked");
     charSetString += characterSets[2][2];
-    console.log(charSetString);
+    // console.log(charSetString);
   }
   if (symbolsElem.checked) {
-    console.log("Symbols is Checked");
+    // console.log("Symbols is Checked");
     charSetString += characterSets[3][2];
-    console.log(charSetString);
+    // console.log(charSetString);
   }
   if (spacesElem.checked) {
-    console.log("Spaces is Checked");
+    // console.log("Spaces is Checked");
     charSetString += characterSets[4][2];
-    console.log(charSetString);
+    // console.log(charSetString);
   }
   return charSetString;
 }
@@ -89,7 +89,7 @@ function createCharSet(str) {
       charSet.push(str.charAt(i));
     }
   }
-  console.log(charSet);
+  // console.log(charSet);
   if (charSet.length > 0) {
     return charSet;
   } else {
@@ -152,7 +152,7 @@ function makePassword(charset, len) {
   for (var i = 0; i < len; i++) {
     result = result + charset[randomInt(charset.length)];
   }
-  console.log(result);
+  // console.log(result);
   return result;
 }
 
@@ -166,7 +166,7 @@ function randomInt(n) {
 /* Uses browser based encryption type to pseudo-randomly generate a secure value. 
 Ensures value is able to be stored (4294967296 is (2^32 -1) */
 function useCrypto(num) {
-  console.log(num);
+  // console.log(num);
   if (cryptoType === null) {
     return 0;
   } else var arr = new Uint32Array(1);
