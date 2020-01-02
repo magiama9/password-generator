@@ -38,6 +38,7 @@ var copyElem = document.getElementById("copy-button");
 var cryptoType = null;
 var generatedPassword = null;
 
+// Sets the correct version of cryptographic methods to use based on browser method availability.
 function chooseCrypto() {
   if ("crypto" in window) {
     cryptoType = crypto;
