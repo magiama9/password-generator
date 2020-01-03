@@ -34,6 +34,7 @@ var spacesElem = document.getElementById("spacesCheckbox");
 var copyElem = document.getElementById("copy-button");
 var lengthElem = document.getElementById("validationDefault05");
 var entropyElem = document.getElementById("entropy");
+var timeToCrackElem = document.getElementById("crack-time");
 var copyElem = document.getElementById("copy-button");
 var cryptoType = null;
 var generatedPassword = null;
@@ -53,29 +54,19 @@ function chooseCrypto() {
 function createCharSetString() {
   var charSetString = "";
   if (numbersElem.checked) {
-    // console.log("Numbers is Checked");
     charSetString += characterSets[0][2];
-    // console.log(charSetString);
   }
   if (lowercaseElem.checked) {
-    // console.log("Lowercase is Checked");
     charSetString += characterSets[1][2];
-    // console.log(charSetString);
   }
   if (uppercaseElem.checked) {
-    // console.log("Uppercase is Checked");
     charSetString += characterSets[2][2];
-    // console.log(charSetString);
   }
   if (symbolsElem.checked) {
-    // console.log("Symbols is Checked");
     charSetString += characterSets[3][2];
-    // console.log(charSetString);
   }
   if (spacesElem.checked) {
-    // console.log("Spaces is Checked");
     charSetString += characterSets[4][2];
-    // console.log(charSetString);
   }
   return charSetString;
 }
@@ -89,7 +80,6 @@ function createCharSet(str) {
       charSet.push(str.charAt(i));
     }
   }
-  // console.log(charSet);
   if (charSet.length > 0) {
     return charSet;
   } else {
@@ -117,12 +107,12 @@ function makePasswordEvent(event) {
   There is form validation to ensure the user selects a length
   This ensures that the user selected length is valid */
   if (isNaN(length)) {
-    alert("Password length must be a number between 2 and 100.");
+    alert("Password length must be a number between 2 and 128.");
     return;
   } else if (length < 2) {
-    alert("Password length must be between 2 and 100 characters.");
+    alert("Password length must be between 2 and 128 characters.");
     return;
-  } else if (length > 100) {
+  } else if (length > 128) {
     alert("Password is too large. Select a more reasonable value.");
     return;
   }
@@ -142,6 +132,10 @@ function makePasswordEvent(event) {
   entropyElem.placeholder =
     "Your password contains " + entropyShort + " bits of entropy";
   entropyElem.style = "display:block";
+
+  // Calculate time to crack password utilizing calculated entropy, and display it to the user.
+  timeToCrackElem.placeholder = timeToCrack(entropy);
+  timeToCrackElem.style = "display:block";
 }
 
 /* Uses whichever browser crypto method is available to
@@ -152,7 +146,6 @@ function makePassword(charset, len) {
   for (var i = 0; i < len; i++) {
     result = result + charset[randomInt(charset.length)];
   }
-  // console.log(result);
   return result;
 }
 
@@ -163,10 +156,9 @@ function randomInt(n) {
   return x;
 }
 
-/* Uses browser based encryption type to pseudo-randomly generate a secure value. 
+/* Uses browser based encryption type to pseudo-randomly generate a secure value.
 Ensures value is able to be stored (4294967296 is (2^32 -1) */
 function useCrypto(num) {
-  // console.log(num);
   if (cryptoType === null) {
     return 0;
   } else var arr = new Uint32Array(1);
@@ -180,4 +172,60 @@ This method may or may not work on firefox based browsers.*/
 
 function doCopy() {
   navigator.clipboard.writeText(generatedPassword);
+}
+
+/* Determine a time to crack password via brute force with user's 
+available processor threads and average clock speed. 
+
+Guaranteed time to crack is calculated as 
+(Seconds to Guaranteed Crack) = (2^(entropy)) / (Guesses per Second)
+
+FLOPS(equivalent to guesses per second) are calculated based on Intel's 
+latest architecture(32 FP operations per processor cycle), 
+an average clock speed of 2.0 ghz, and the number of threads available.
+
+FLOPS = (threads) * (cycles per second) * (FLOPS per cycle)
+*/
+
+function timeToCrack(entropy) {
+  var threads = navigator.hardwareConcurrency;
+  const speed = 2000000000;
+  var flops = threads * speed * 32;
+  var secondsToCrack = Math.pow(2, entropy) / flops;
+  var minutesToCrack = secondsToCrack / 60;
+  var hoursToCrack = minutesToCrack / 60;
+  var daysToCrack = hoursToCrack / 24;
+  var yearsToCrack = daysToCrack / 365;
+
+  if (minutesToCrack < 1) {
+    return (
+      "Your computer would be able to crack this password in " +
+      secondsToCrack.toFixed(2) +
+      " seconds"
+    );
+  } else if (hoursToCrack < 1) {
+    return (
+      "Your computer would be able to crack this password in " +
+      minutesToCrack.toFixed(2) +
+      " minutes."
+    );
+  } else if (daysToCrack < 1) {
+    return (
+      "Your computer would be able to crack this password in " +
+      hoursToCrack.toFixed(2) +
+      " hours."
+    );
+  } else if (yearsToCrack < 1) {
+    return (
+      "Your computer would be able to crack this password in " +
+      daysToCrack.toFixed(2) +
+      " days."
+    );
+  } else {
+    return (
+      "Your computer would be able to crack this password in " +
+      yearsToCrack.toFixed(2) +
+      " years."
+    );
+  }
 }
