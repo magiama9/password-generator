@@ -1,5 +1,5 @@
 # password-generator
-Password Generator Homework Repo
+Cryptographically Secure Password Generator Implemenation in JS.
 
 ## Description
 
